@@ -86,7 +86,7 @@ xit
 eof
 
 #Create wg openwrt config file
-ex /etc/wireguard/wg0.conf <<eof
+ex /wireguard/openwrt/openwrt.conf <<eof
 insert
 [Interface]
 Address = 10.1.1.2
@@ -103,7 +103,7 @@ xit
 eof
 
 #Create wg manager config file
-ex /etc/wireguard/wg0.conf <<eof
+ex /wireguard/manager/manager.conf <<eof
 insert
 [Interface]
 Address = 10.1.1.3
@@ -121,6 +121,7 @@ eof
 
 ### UFW & Wireguard global ###
 ufw allow 22/tcp
+ufw allow 51820/udp
 yes | sudo ufw enable
 systemctl enable wg-quick@wg0
 systemctl start wg-quick@wg0
