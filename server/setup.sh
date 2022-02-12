@@ -5,7 +5,7 @@ INTERFACE_NAME=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
 ##### Linux configurations ####
 #Upgrade packages
 apt update && apt upgrade -y
-apt install wireguard -y
+apt install wireguard qrencode -y
 
 #Enable ivp4 forward
 echo net.ipv4.ip_forward=1 >>/etc/sysctl.conf
@@ -86,7 +86,7 @@ xit
 eof
 
 #Create wg openwrt config file
-ex /wireguard/openwrt/openwrt.conf <<eof
+ex /root/wireguard/openwrt/openwrt.conf <<eof
 insert
 [Interface]
 Address = 10.1.1.2
@@ -103,7 +103,7 @@ xit
 eof
 
 #Create wg manager config file
-ex /wireguard/manager/manager.conf <<eof
+ex /root/wireguard/manager/manager.conf <<eof
 insert
 [Interface]
 Address = 10.1.1.3
