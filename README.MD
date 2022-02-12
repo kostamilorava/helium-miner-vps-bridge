@@ -10,13 +10,13 @@ I will split this setup into two parts. First one will be server configuration, 
 
 Server configuration is meant to be the hardest one, but I have written script that makes this setup dead simple.
 
-
 ## Server configuration
 
-All you have to to is to download bash script and run it. It will do most hard work. Login with root user and run:
+All you have to do is download bash script and run it. It will do all hard work. Login with root user and run:
 
 ```
-cd /root/ wget -O - https://raw.githubusercontent.com/<username>/<project>/<branch>/<path>/<file>
-chmod 700 server.sh
-./server.sh
+cd /root/
+wget https://raw.githubusercontent.com/kostamilorava/helium-vpn-bridge/main/server/setup.sh --output-document=/root/setup.sh
+chmod 700 /root/setup.sh
+./setup.sh
 ```

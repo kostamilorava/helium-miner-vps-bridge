@@ -24,7 +24,7 @@ ex /etc/ufw/before.rules <<eof
 -A POSTROUTING -s 10.1.1.0/24 -o $INTERFACE_NAME -j MASQUERADE
 #44158/TCP: the helium hotspot communicates to other helium hotspots over this port. The networking logic knows how to get around a lack of forwarding here, but you will get better performance by forwarding the port
 -A PREROUTING -i $INTERFACE_NAME -p tcp -m tcp --dport 44158 -j DNAT --to-destination 10.1.1.2:44158
-1680/UDP: the radio connects to the helium hotspot over this port. You will not be able to forward packets or participate in Proof of Coverage without this
+#1680/UDP: the radio connects to the helium hotspot over this port. You will not be able to forward packets or participate in Proof of Coverage without this
 -A PREROUTING -i $INTERFACE_NAME -p udp -m udp --dport 1680 -j DNAT --to-destination 10.1.1.2:1680
 COMMIT
 .
@@ -121,6 +121,6 @@ eof
 
 ### UFW & Wireguard global ###
 ufw allow 22/tcp
-ufw enable -y
+yes | sudo ufw enable
 systemctl enable wg-quick@wg0
 systemctl start wg-quick@wg0
