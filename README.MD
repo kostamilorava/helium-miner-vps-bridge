@@ -20,3 +20,5 @@ wget https://raw.githubusercontent.com/kostamilorava/helium-vpn-bridge/main/serv
 chmod 700 /root/setup.sh
 ./setup.sh
 ```
+
+To generate qr code for mobile application, run `qrencode -t ansiutf8 < configfile.conf`
