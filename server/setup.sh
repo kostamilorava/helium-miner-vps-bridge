@@ -1,11 +1,11 @@
-# Global variables
-SERVER_PUBLIC_IP=$(curl https://checkip.amazonaws.com)
-INTERFACE_NAME=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
-
 ##### Linux configurations ####
 #Upgrade packages
 apt update && apt upgrade -y
-apt install wireguard qrencode fail2ban -y
+apt install wireguard qrencode fail2ban curl -y
+
+# Global variables
+SERVER_PUBLIC_IP=$(curl https://checkip.amazonaws.com)
+INTERFACE_NAME=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
 
 #Enable ivp4 forward
 echo net.ipv4.ip_forward=1 >>/etc/sysctl.conf
