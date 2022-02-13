@@ -17,7 +17,7 @@ All you have to do is download bash script and run it. It will do all hard work.
 ```
 cd /root/
 wget https://raw.githubusercontent.com/kostamilorava/helium-vpn-bridge/main/server/setup.sh --output-document=/root/setup.sh
-chmod 700 /root/setup.sh
+chmod 700 setup.sh
 ./setup.sh
 #Just a breakline :)
 ```
@@ -47,6 +47,9 @@ Check 'Route Allowed IPs' checkbox.
 
 Write your server's public ip address in 'Endpoint Host'. Write 25 in 'Persistent Keep Alive' and click 'save'.
 
-That's it. Your openwrt is now routed through your VPS. Also, from vps ports are forwarded to OpenWRT or any lan device.
+That's it. Your openwrt is now routed through your VPS. Also, from vps ports can be forwarded to OpenWRT or any lan
+device (you need to set it).
+
+Now we should set static Lease for our miner to be sure that it will always take one ip address.
 
 

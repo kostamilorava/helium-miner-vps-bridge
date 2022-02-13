@@ -5,7 +5,7 @@ INTERFACE_NAME=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
 ##### Linux configurations ####
 #Upgrade packages
 apt update && apt upgrade -y
-apt install wireguard qrencode -y
+apt install wireguard qrencode fail2ban -y
 
 #Enable ivp4 forward
 echo net.ipv4.ip_forward=1 >>/etc/sysctl.conf
@@ -20,7 +20,7 @@ ex /etc/ufw/before.rules <<eof
 1 insert
 *nat
 :POSTROUTING ACCEPT [0:0]
-# Allow traffic or VPN
+# Allow traffic of VPN
 -A POSTROUTING -s 10.1.1.0/24 -o $INTERFACE_NAME -j MASQUERADE
 #44158/TCP: the helium hotspot communicates to other helium hotspots over this port. The networking logic knows how to get around a lack of forwarding here, but you will get better performance by forwarding the port
 -A PREROUTING -i $INTERFACE_NAME -p tcp -m tcp --dport 44158 -j DNAT --to-destination 10.1.1.2:44158
