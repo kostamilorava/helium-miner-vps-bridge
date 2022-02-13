@@ -19,6 +19,7 @@ cd /root/
 wget https://raw.githubusercontent.com/kostamilorava/helium-vpn-bridge/main/server/setup.sh --output-document=/root/setup.sh
 chmod 700 setup.sh
 ./setup.sh
+rm setup.sh
 #Just a breakline :)
 ```
 
