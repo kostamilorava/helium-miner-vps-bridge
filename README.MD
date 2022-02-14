@@ -20,6 +20,7 @@ wget https://raw.githubusercontent.com/kostamilorava/helium-vpn-bridge/main/serv
 chmod 700 setup.sh
 ./setup.sh
 rm setup.sh
+reboot now
 #Just a breakline :)
 ```
 
