@@ -24,6 +24,13 @@ reboot now
 #Just a breakline :)
 ```
 
+After reboot, you will need to read wireguard config file and paste it's contents to OpenWRT. For this, execute this
+command:
+
+```
+nano /root/wireguard/openwrt/openwrt.conf
+```
+
 That's it. You have own running VPN server for any of your devices.
 
 To generate qr code for mobile application, run `qrencode -t ansiutf8 < configfile.conf`
