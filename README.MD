@@ -61,4 +61,6 @@ device (you need to set it).
 
 Now we should set static Lease for our miner to be sure that it will always take one ip address.
 
+After that, do port forwarding from `wan` to miner ip address and that's it.
+
 
