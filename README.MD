@@ -65,4 +65,11 @@ After that, do port forwarding from `wan` to miner ip address and that's everyth
 
 Port forwarding should now work.
 
+## Update 06.04.2022
 
+After HIP54 & HIP55 update, we are not forced to have static ip's. instead, we can use wg only to access miner through
+tunnel (if we want to). This will decrease downtimes because of VPS, will not use more CPU on router and traffic will
+not go through VPN (will not lose speed).
+
+For this, in OpenWRT Wireguard interface configuration, in "Allowed ips" field, you should enter: `10.1.1.1/32`. This will make
+sure that only wireguard traffic will go through VPN.
