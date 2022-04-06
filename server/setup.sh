@@ -20,12 +20,17 @@ ex /etc/ufw/before.rules <<eof
 1 insert
 *nat
 :POSTROUTING ACCEPT [0:0]
-# Allow traffic of VPN
--A POSTROUTING -s 10.1.1.0/24 -o $INTERFACE_NAME -j MASQUERADE
+# This rule works when we want to forward all traffic from OpenWRT to VPN tunnel. I was using it before HIP54 & HIP55
+# Also, changed -A to -I everywhere
+#-A POSTROUTING -s 10.1.1.0/24 -o $INTERFACE_NAME -j MASQUERADE
+
+# This rule is new, after HIP54 & HIP55
+-I POSTROUTING -o wg0 -j MASQUERADE
+
 #44158/TCP: the helium hotspot communicates to other helium hotspots over this port. The networking logic knows how to get around a lack of forwarding here, but you will get better performance by forwarding the port
--A PREROUTING -i $INTERFACE_NAME -p tcp -m tcp --dport 44158 -j DNAT --to-destination 10.1.1.2:44158
+-I PREROUTING -i $INTERFACE_NAME -p tcp -m tcp --dport 44158 -j DNAT --to-destination 10.1.1.2:44158
 #1680/UDP: the radio connects to the helium hotspot over this port. You will not be able to forward packets or participate in Proof of Coverage without this
--A PREROUTING -i $INTERFACE_NAME -p udp -m udp --dport 1680 -j DNAT --to-destination 10.1.1.2:1680
+-I PREROUTING -i $INTERFACE_NAME -p udp -m udp --dport 1680 -j DNAT --to-destination 10.1.1.2:1680
 COMMIT
 .
 xit
