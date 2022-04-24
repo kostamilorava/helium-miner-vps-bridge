@@ -81,11 +81,13 @@ PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACC
 # Openwrt
 PublicKey = $OPENWRT_PUBLIC_KEY
 AllowedIPs = 10.1.1.2/32
+PersistentKeepalive = 25
 
 [Peer]
 # Manager
 PublicKey = $MANAGER_PUBLIC_KEY
 AllowedIPs = 10.1.1.3/32
+PersistentKeepalive = 25
 .
 xit
 eof
