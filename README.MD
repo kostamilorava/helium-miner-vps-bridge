@@ -34,6 +34,7 @@ nano /root/wireguard/openwrt/openwrt.conf
 That's it. You have own running VPN server for any of your devices.
 
 To generate qr code for mobile application, run `qrencode -t ansiutf8 < configfile.conf`
+(or `qrencode -t png -o vivek-iphone7.png -r config.conf` to generate png)
 
 ## OpenWRT configuration
 
