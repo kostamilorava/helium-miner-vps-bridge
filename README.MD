@@ -40,7 +40,7 @@ To generate qr code for mobile application, run `qrencode -t ansiutf8 < configfi
 
 Here we will need bit more time.
 
-Press 'Update lists...' in `System > Software` and install  `luci-app-wireguard`. This will install all dependencies.
+Press 'Update lists...' in `System > Software` and install  `luci-app-wireguard` (or `luci-proto-wireguard` in newer versions). This will install all dependencies.
 
 Reboot router, go to `Network > interfaces` and press 'Add new interface...'. Type any name, select 'WireGuard VPN' in
 protocol and press 'Create interface button'.
